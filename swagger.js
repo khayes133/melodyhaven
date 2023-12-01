@@ -6,7 +6,7 @@ const doc = {
         description: "melodyhaven API Information and Documentation",
         version: "1.0.0"
     },
-    host: "localhost:3030",
+    host: "localhost:3000",
     schemes: ['https']
 };
 
