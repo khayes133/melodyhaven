@@ -7,12 +7,25 @@
   },
   "host": "melody-haven.onrender.com",
   "basePath": "/",
-  "schemes": [
-    "https"
+  "schemes": ["https"],
+  "tags": [
+    {
+      "name": "API Docs",
+      "description": "Operations related to Swagger documentation"
+    },
+    {
+      "name": "Users",
+      "description": "Operations related to user management"
+    },
+    {
+      "name": "Albums",
+      "description": "Operations related to albums"
+    }
   ],
   "paths": {
     "/api-docs": {
       "get": {
+        "tags": ["API Docs"],
         "description": "Returns Swagger Documentation using Swagger UI.",
         "responses": {
           "default": {
@@ -23,10 +36,9 @@
     },
     "/users/": {
       "get": {
+        "tags": ["Users"],
         "description": "Gets a list of all users.",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "OK"
@@ -37,6 +49,7 @@
         }
       },
       "post": {
+        "tags": ["Users"],
         "description": "Creates a new user account.",
         "parameters": [
           {
@@ -73,10 +86,9 @@
     },
     "/users/{id}": {
       "get": {
+        "tags": ["Users"],
         "description": "Get user details by ID.",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "parameters": [
           {
             "name": "id",
@@ -98,6 +110,7 @@
         }
       },
       "put": {
+        "tags": ["Users"],
         "description": "Update user details by ID",
         "parameters": [
           {
@@ -138,6 +151,7 @@
         }
       },
       "delete": {
+        "tags": ["Users"],
         "description": "Deletes a user by ID.",
         "parameters": [
           {
@@ -162,10 +176,9 @@
     },
     "/albums/": {
       "get": {
+        "tags": ["Albums"],
         "description": "Get a list of all albums",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "OK"
@@ -176,6 +189,7 @@
         }
       },
       "post": {
+        "tags": ["Albums"],
         "description": "Create a new album.",
         "parameters": [
           {
@@ -212,10 +226,9 @@
     },
     "/albums/{id}": {
       "get": {
+        "tags": ["Albums"],
         "description": "Get album details by ID.",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "parameters": [
           {
             "name": "id",
@@ -237,6 +250,7 @@
         }
       },
       "put": {
+        "tags": ["Albums"],
         "description": "Update album details by ID.",
         "parameters": [
           {
@@ -277,6 +291,7 @@
         }
       },
       "delete": {
+        "tags": ["Albums"],
         "description": "Deletes an album by ID.",
         "parameters": [
           {
