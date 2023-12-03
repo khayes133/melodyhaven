@@ -13,7 +13,7 @@
   "paths": {
     "/api-docs": {
       "get": {
-        "description": "",
+        "description": "Returns Swagger Documentation using Swagger UI.",
         "responses": {
           "default": {
             "description": ""
@@ -23,7 +23,7 @@
     },
     "/users/": {
       "get": {
-        "description": "",
+        "description": "Gets a list of all users.",
         "produces": [
           "application/json"
         ],
@@ -37,7 +37,7 @@
         }
       },
       "post": {
-        "description": "",
+        "description": "Creates a new user account.",
         "parameters": [
           {
             "name": "body",
@@ -46,16 +46,16 @@
               "type": "object",
               "properties": {
                 "email": {
-                  "example": "any"
+                  "example": "jane.doe@example.com"
                 },
                 "username": {
-                  "example": "any"
+                  "example": "janedoe123"
                 },
                 "name": {
-                  "example": "any"
+                  "example": "Jane Doe"
                 },
                 "avatarImg": {
-                  "example": "any"
+                  "example": "jane-doe.jpg"
                 }
               }
             }
@@ -73,7 +73,7 @@
     },
     "/users/{id}": {
       "get": {
-        "description": "",
+        "description": "Get user details by ID.",
         "produces": [
           "application/json"
         ],
@@ -98,7 +98,7 @@
         }
       },
       "put": {
-        "description": "",
+        "description": "Update user details by ID",
         "parameters": [
           {
             "name": "id",
@@ -113,16 +113,16 @@
               "type": "object",
               "properties": {
                 "email": {
-                  "example": "any"
+                  "example": "john.smith@example.com"
                 },
                 "username": {
-                  "example": "any"
+                  "example": "johnsmith321"
                 },
                 "name": {
-                  "example": "any"
+                  "example": "John Smith"
                 },
                 "avatarImg": {
-                  "example": "any"
+                  "example": "john-smith.jpg"
                 }
               }
             }
@@ -138,7 +138,7 @@
         }
       },
       "delete": {
-        "description": "",
+        "description": "Deletes a user by ID.",
         "parameters": [
           {
             "name": "id",
@@ -162,7 +162,7 @@
     },
     "/albums/": {
       "get": {
-        "description": "",
+        "description": "Get a list of all albums",
         "produces": [
           "application/json"
         ],
@@ -176,7 +176,7 @@
         }
       },
       "post": {
-        "description": "",
+        "description": "Create a new album.",
         "parameters": [
           {
             "name": "body",
@@ -185,16 +185,16 @@
               "type": "object",
               "properties": {
                 "artist": {
-                  "example": "any"
+                  "example": "The Beatles"
                 },
                 "albumName": {
-                  "example": "any"
+                  "example": "Abbey Road"
                 },
                 "coverImage": {
-                  "example": "any"
+                  "example": "abbey-road.jpg"
                 },
                 "recordLabel": {
-                  "example": "any"
+                  "example": "Apple Records"
                 }
               }
             }
@@ -212,7 +212,7 @@
     },
     "/albums/{id}": {
       "get": {
-        "description": "",
+        "description": "Get album details by ID.",
         "produces": [
           "application/json"
         ],
@@ -237,7 +237,7 @@
         }
       },
       "put": {
-        "description": "",
+        "description": "Update album details by ID.",
         "parameters": [
           {
             "name": "id",
@@ -252,16 +252,16 @@
               "type": "object",
               "properties": {
                 "artist": {
-                  "example": "any"
+                  "example": "Marvin Gaye"
                 },
                 "albumName": {
-                  "example": "any"
+                  "example": "What's Going On"
                 },
                 "coverImage": {
-                  "example": "any"
+                  "example": "whats-going-on.jpg"
                 },
                 "recordLabel": {
-                  "example": "any"
+                  "example": "Tamla"
                 }
               }
             }
@@ -277,7 +277,7 @@
         }
       },
       "delete": {
-        "description": "",
+        "description": "Deletes an album by ID.",
         "parameters": [
           {
             "name": "id",
