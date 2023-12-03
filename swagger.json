@@ -5,7 +5,7 @@
     "description": "melodyhaven API Information and Documentation",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "melody-haven.onrender.com",
   "basePath": "/",
   "schemes": [
     "https"
