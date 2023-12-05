@@ -7,7 +7,9 @@
   },
   "host": "melody-haven.onrender.com",
   "basePath": "/",
-  "schemes": ["https"],
+  "schemes": [
+    "https"
+  ],
   "tags": [
     {
       "name": "API Docs",
@@ -20,13 +22,17 @@
     {
       "name": "Albums",
       "description": "Operations related to albums"
+    },
+    {
+      "name": "Threads",
+      "description": "Operations related to threads"
     }
   ],
   "paths": {
     "/api-docs": {
       "get": {
         "tags": ["API Docs"],
-        "description": "Returns Swagger Documentation using Swagger UI.",
+        "description": "Returns Swagger Documentation using Swagger UI",
         "responses": {
           "default": {
             "description": ""
@@ -37,8 +43,10 @@
     "/users/": {
       "get": {
         "tags": ["Users"],
-        "description": "Gets a list of all users.",
-        "produces": ["application/json"],
+        "description": "Gets a list of all users",
+        "produces": [
+          "application/json"
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -50,7 +58,7 @@
       },
       "post": {
         "tags": ["Users"],
-        "description": "Creates a new user account.",
+        "description": "Creates a new user account",
         "parameters": [
           {
             "name": "body",
@@ -87,8 +95,10 @@
     "/users/{id}": {
       "get": {
         "tags": ["Users"],
-        "description": "Get user details by ID.",
-        "produces": ["application/json"],
+        "description": "Get user details by ID",
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -152,7 +162,7 @@
       },
       "delete": {
         "tags": ["Users"],
-        "description": "Deletes a user by ID.",
+        "description": "Deletes a user by ID",
         "parameters": [
           {
             "name": "id",
@@ -178,7 +188,9 @@
       "get": {
         "tags": ["Albums"],
         "description": "Get a list of all albums",
-        "produces": ["application/json"],
+        "produces": [
+          "application/json"
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -190,7 +202,7 @@
       },
       "post": {
         "tags": ["Albums"],
-        "description": "Create a new album.",
+        "description": "Create a new album",
         "parameters": [
           {
             "name": "body",
@@ -227,8 +239,10 @@
     "/albums/{id}": {
       "get": {
         "tags": ["Albums"],
-        "description": "Get album details by ID.",
-        "produces": ["application/json"],
+        "description": "Get album details by ID",
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -251,7 +265,7 @@
       },
       "put": {
         "tags": ["Albums"],
-        "description": "Update album details by ID.",
+        "description": "Update album details by ID",
         "parameters": [
           {
             "name": "id",
@@ -292,13 +306,201 @@
       },
       "delete": {
         "tags": ["Albums"],
-        "description": "Deletes an album by ID.",
+        "description": "",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/threads/": {
+      "get": {
+        "tags": ["Threads"],
+        "description": "Gets a list of all threads regarding of userID",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/threads/{userId}": {
+      "get": {
+        "tags": ["Threads"],
+        "description": "Gets a list of threads filtered by userID",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/threads/{threadId}": {
+      "get": {
+        "tags": ["Threads"],
+        "description": "Gets a single thread by threadID",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "threadId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Threads"],
+        "description": "Deletes a single thread",
+        "parameters": [
+          {
+            "name": "threadId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/threads/{userId}/{albumId}": {
+      "post": {
+        "tags": ["Threads"],
+        "description": "Create a new thread",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "albumId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "threadTitle": {
+                  "example": "Life Chaging Album"
+                },
+                "threadContent": {
+                  "example": "lore ipsum dolor sit amet consectetur adipiscing elit"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/threads/{threadId}/{albumId}": {
+      "put": {
+        "tags": ["Threads"],
+        "description": "Update thread details by ID",
+        "parameters": [
+          {
+            "name": "threadId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "albumId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "threadTitle": {
+                  "example": "Do not listen to this album!"
+                },
+                "threadContent": {
+                  "example": "lore ipsum dolor sit amet consectetur adipiscing elit"
+                }
+              }
+            }
           }
         ],
         "responses": {
