@@ -26,6 +26,39 @@ mongodb.initDb((err) => {
   else {
     app.listen(port, () => {
         console.log(`Database is listening and running on port ${port}`);
+
+        // Route Testing
+        request(app)
+          .get('/albums')
+          .expect('Content-Type', /json/)
+          .expect(200)
+          .end(function(err, res) {
+            if (err) throw err;
+          });
+
+        request(app)
+          .get('/users')
+          .expect('Content-Type', /json/)
+          .expect(200)
+          .end(function(err, res) {
+            if (err) throw err;
+          });
+        
+        request(app)
+          .get('/threads')
+          .expect('Content-Type', /json/)
+          .expect(200)
+          .end(function(err, res) {
+            if (err) throw err;
+          });
+
+        request(app)
+          .get('/posts')
+          .expect('Content-Type', /json/)
+          .expect(200)
+          .end(function(err, res) {
+            if (err) throw err;
+          })
       });
     }
 });
