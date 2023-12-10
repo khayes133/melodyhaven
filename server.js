@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const request = require('supertest');
 
 const mongodb = require('./data/database');
 const app = express();
@@ -26,6 +27,43 @@ mongodb.initDb((err) => {
   else {
     app.listen(port, () => {
         console.log(`Database is listening and running on port ${port}`);
+
+        // Route Testing
+        request(app)
+          .get('/albums')
+          .expect('Content-Type', /json/)
+          .expect(200)
+          .end(function(err, res) {
+            if (err) throw err;
+            else console.log('Album route works properly.');
+          });
+
+        request(app)
+          .get('/users')
+          .expect('Content-Type', /json/)
+          .expect(200)
+          .end(function(err, res) {
+            if (err) throw err;
+            else console.log('Users route works properly.');
+          });
+        
+        request(app)
+          .get('/threads')
+          .expect('Content-Type', /json/)
+          .expect(200)
+          .end(function(err, res) {
+            if (err) throw err;
+            else console.log('Threads route works properly.');
+          });
+
+        request(app)
+          .get('/posts')
+          .expect('Content-Type', /json/)
+          .expect(200)
+          .end(function(err, res) {
+            if (err) throw err;
+            else console.log('Posts route works properly.');
+          })
       });
     }
 });
