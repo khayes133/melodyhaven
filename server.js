@@ -1,13 +1,25 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const request = require('supertest');
-
+const passport = require('passport')
 const mongodb = require('./data/database');
+
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(obj, done) {
+  done(null, obj);
+});
+
 const app = express();
 
 const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
+app.use(session({ secret: process.env.SESSION_SECRET, resave: false, saveUninitialized: false }));
+app.use(passport.initialize());
+app.use(passport.session());
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*'); // Change later to only allow our server
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
