@@ -1,7 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const request = require('supertest');
-const passport = require('passport')
+const passport = require('passport');
+const session = require('express-session');
 const mongodb = require('./data/database');
 
 passport.serializeUser(function(user, done) {
